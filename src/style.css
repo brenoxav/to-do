@@ -159,10 +159,6 @@ input {
   box-shadow: 0 0 8px #0002;
 }
 
-.header {
-  background-color: #444;
-}
-
 .list-icon {
   margin-right: 1rem;
   font-size: 2rem;
@@ -193,6 +189,10 @@ input {
 
 .btn-delete {
   margin: auto 0.5rem;
+}
+
+.drag-icon {
+  cursor: move;
 }
 
 .btn-delete:hover {

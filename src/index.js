@@ -26,8 +26,7 @@ function renderList() {
     <li class="todo-item item" data-index="${todo.index}">
       <input class="todo-checkbox" type="checkbox" value="${todo.index}">
       <input class="todo-text" type="text" value="${todo.description}">
-      <span class="material-icons btn-icon btn-delete">delete</span>
-      <span class="material-icons btn-icon">drag_indicator</span>
+      <span class="material-icons btn-icon drag-icon">drag_indicator</span>
     </li>
     `;
 
