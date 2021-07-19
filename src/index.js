@@ -1,21 +1,37 @@
-import printMe from './print';
 import './style.css';
-import Logo from './webpack-logo.svg';
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+const list = document.querySelector('.todo-list');
 
-  btn.innerHTML = 'Click me and check the console.';
-  btn.onclick = printMe;
+const myList = [
+  {
+    description: 'Setup linters',
+    completed: false,
+    index: 1,
+  },
+  {
+    description: 'Configure Webpack',
+    completed: false,
+    index: 2,
+  },
+  {
+    description: 'Update README',
+    completed: false,
+    index: 3,
+  },
+];
 
-  const logo = new Image();
-  logo.src = Logo;
+function renderList() {
+  myList.forEach((todo) => {
+    const todoItem = `
+    <li class="todo-item item" data-index="${todo.index}">
+      <input class="todo-checkbox" type="checkbox" value="${todo.index}">
+      <input class="todo-text" type="text" value="${todo.description}">
+      <span class="material-icons btn-icon drag-icon">drag_indicator</span>
+    </li>
+    `;
 
-  element.appendChild(logo);
-  element.appendChild(btn);
-
-  return element;
+    list.innerHTML += todoItem;
+  });
 }
 
-document.body.appendChild(component());
+window.addEventListener('load', renderList);
