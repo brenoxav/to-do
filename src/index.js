@@ -1,37 +1,32 @@
 import './style.css';
+import Todo from './classes/Todo.js';
+import TodoList from './classes/TodoList.js';
 
 const list = document.querySelector('.todo-list');
 
-const myList = [
-  {
+const myList = new TodoList([
+  new Todo({
     description: 'Setup linters',
-    completed: false,
+    completed: true,
     index: 1,
-  },
-  {
+  }),
+  new Todo({
     description: 'Configure Webpack',
     completed: false,
     index: 2,
-  },
-  {
+  }),
+  new Todo({
     description: 'Update README',
     completed: false,
     index: 3,
-  },
-];
+  }),
+]);
 
 function renderList() {
-  myList.forEach((todo) => {
-    const todoItem = `
-    <li class="todo-item item" data-index="${todo.index}">
-      <input class="todo-checkbox" type="checkbox" value="${todo.index}">
-      <input class="todo-text" type="text" value="${todo.description}">
-      <span class="material-icons btn-icon drag-icon">drag_indicator</span>
-    </li>
-    `;
-
-    list.innerHTML += todoItem;
+  myList.getTodos().forEach((todo) => {
+    list.innerHTML += todo.element;
   });
 }
 
 window.addEventListener('load', renderList);
+window.addEventListener('click', renderList);
