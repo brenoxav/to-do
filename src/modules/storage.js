@@ -1,11 +1,11 @@
 import Todo from '../classes/Todo.js';
 
 class Storage {
-  static setStorage(todosArr) {
+  setStorage(todosArr) {// eslint-disable-line
     window.localStorage.setItem('todos', JSON.stringify(todosArr));
   }
 
-  static getStorage() {
+  getStorage() {// eslint-disable-line
     const storedList = JSON.parse(window.localStorage.getItem('todos'));
     const todosArr = storedList.map((todo) => new Todo({
       description: todo.description,
@@ -14,7 +14,7 @@ class Storage {
     return todosArr;
   }
 
-  static hasStorage() {
+  hasStorage() {// eslint-disable-line
     if (window.localStorage.getItem('todos') !== null && window.localStorage.getItem('todos').length > 0) {
       return true;
     }
