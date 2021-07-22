@@ -1,32 +1,35 @@
 import './style.css';
 import Todo from './classes/Todo.js';
-import TodoList from './classes/TodoList.js';
+import todoList from './classes/TodoList.js';
+import { createElement, getIndex, renderList } from './modules/utils.js';
+import setDraggables from './modules/drag_drop.js';
 
 const list = document.querySelector('.todo-list');
 
-const myList = new TodoList([
+const myList = [
   new Todo({
     description: 'Setup linters',
     completed: true,
-    index: 1,
   }),
   new Todo({
     description: 'Configure Webpack',
     completed: false,
-    index: 2,
   }),
   new Todo({
     description: 'Update README',
     completed: false,
-    index: 3,
   }),
-]);
+];
 
-function renderList() {
-  myList.getTodos().forEach((todo) => {
-    list.innerHTML += todo.element;
-  });
+function initializeList(myList) {
+  myList.forEach((todo) => {
+    todoList.addTodo(todo);
+  })
 }
 
-window.addEventListener('load', renderList);
-window.addEventListener('click', renderList);
+setDraggables();
+
+window.addEventListener('load', () => {
+  initializeList(myList);
+  renderList(myList);
+});

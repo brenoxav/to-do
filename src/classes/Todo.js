@@ -1,18 +1,38 @@
 export default class Todo {
-  constructor({ description = '', completed = false, index = 0 }) {
+  constructor({ description = '', completed = false, index = 0, element = null }) {
     this.description = description;
     this.completed = completed;
     this.index = index;
-    this.createElement();
+    this.element = element;
   }
 
-  createElement() {
-    this.element = `
-    <li class="todo-item item" draggable="true">
-      <input class="todo-checkbox" type="checkbox" ${this.completed ? 'checked= "true"' : ''}>
-      <input class="todo-text" type="text" value="${this.description}">
-      <span class="material-icons btn-icon drag-icon">drag_indicator</span>
-    </li>
-    `;
+  setDescription(description) {
+    this.description = description
+    const todoDescription = this.element.querySelector('.todo-text');
+    todoDescription.value = this.description;
+  }
+
+  getDescription() {
+    return this.description;
+  }
+
+  setIndex(index) {
+    this.index = index;
+  }
+
+  getIndex() {
+    return this.index;
+  }
+
+  toggleCompleted() {
+    this.completed = !this.completed;
+  }
+
+  getElement() {
+    return this.element;
+  }
+
+  setElement(element) {
+    this.element = element;
   }
 }

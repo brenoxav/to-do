@@ -1,29 +1,37 @@
-export default class TodoList {
+class TodoList {
   constructor(todosArr = []) {
-    this.todos = this.updateIndexes(todosArr);
+    this.todos = todosArr;
+  }
+  
+  findTodo(element){
+    return this.todos.find((todo) => todo.element === element);
   }
 
-  updateIndexes(todosArr = this.todos) {
-    return todosArr.map((todo, index) => {
-      todo.index = index;
-      return todo;
-    });
+  sortList = () => {
+    const byIndex = (a, b) => {
+      if (a.index > b.index) {
+        return 1;
+      }
+      return -1;
+    };
+    this.todos.sort((byIndex));
+    console.log(this.todos);
   }
 
-  updateIndexes(todosArr = this.todos) {
-    return todosArr.map((todo, index) => {
-      todo.index = index + 1;
-      return todo;
-    });
-  }
 
   addTodo(todoObj) {
-    todoObj.index = this.todos.length;
     this.todos = [...this.todos, todoObj];
-    return todoObj;
+  }
+  
+  setTodos(todosArr) {
+    this.todos = todosArr;
   }
 
   getTodos() {
     return this.todos;
   }
 }
+
+const todoList = new TodoList();
+
+export { todoList as default };

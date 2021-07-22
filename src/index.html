@@ -19,7 +19,13 @@
       <span class="material-icons btn-icon">keyboard_return</span>
     </div>
     <ul class="todo-list">
-
+      <template class="list-template">
+        <li class="todo-item item" draggable="true">
+          <input class="todo-checkbox" type="checkbox">
+          <input class="todo-text" type="text">
+          <span class="material-icons btn-icon drag-icon">drag_indicator</span>
+        </li>
+      </template>
     </ul>
     <div class="btn-item item">
       <button class="btn-clear-todos" type="button">Clear all completed</button>

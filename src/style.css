@@ -180,6 +180,7 @@ input {
 .todo-text {
   width: 100%;
   margin: 0 1rem;
+  background-color: transparent;
 }
 
 .btn-icon {
@@ -212,4 +213,20 @@ input {
 .btn-clear-todos:hover {
   text-decoration: underline;
   color: #f44;
+}
+
+.dragged {
+  background-color: #eee;
+}
+
+.dragged * {
+  pointer-events: none;
+}
+
+.target {
+  border: 2px dashed #ccc;
+}
+
+.target * {
+  pointer-events: none;
 }
