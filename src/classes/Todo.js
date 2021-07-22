@@ -1,5 +1,7 @@
 export default class Todo {
-  constructor({ description = '', completed = false, index = 0, element = null }) {
+  constructor({
+    description = '', completed = false, index = 0, element = null,
+  }) {
     this.description = description;
     this.completed = completed;
     this.index = index;
@@ -7,7 +9,7 @@ export default class Todo {
   }
 
   setDescription(description) {
-    this.description = description
+    this.description = description;
     const todoDescription = this.element.querySelector('.todo-text');
     todoDescription.value = this.description;
   }

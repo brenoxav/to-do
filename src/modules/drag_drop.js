@@ -1,5 +1,5 @@
-import todoList from "../classes/TodoList.js";
-import { renderList } from "./utils.js";
+import todoList from '../classes/TodoList.js';
+import { renderList } from './utils.js';
 
 let draggedObject = null;
 
@@ -10,11 +10,10 @@ function isValidDragElement(element) {
   return false;
 }
 
-export default function setDraggables() {
-
+export default function setDraggables(saveCallback) {
   document.addEventListener('dragstart', (e) => {
     if (isValidDragElement(e.target)) {
-      draggedObject = todoList.findTodo(e.target)
+      draggedObject = todoList.findTodo(e.target);
       e.target.classList.add('dragged');
     }
   });
@@ -40,21 +39,20 @@ export default function setDraggables() {
   document.addEventListener('dragover', (e) => {
     if (isValidDragElement(e.target)) {
       e.preventDefault();
-
     }
   });
 
   document.addEventListener('drop', (e) => {
     if (isValidDragElement(e.target) && e.target.classList.contains('target')) {
       e.preventDefault();
-      console.log(todoList.getTodos());
-      let targetObject = todoList.findTodo(e.target);
-      let temp = draggedObject.index;
+      const targetObject = todoList.findTodo(e.target);
+      const temp = draggedObject.index;
       draggedObject.index = targetObject.index;
       targetObject.index = temp;
       todoList.sortList();
-      e.target.classList.remove('target');
       renderList(todoList.getTodos());
+      saveCallback();
+      e.target.classList.remove('target');
     }
   });
 }

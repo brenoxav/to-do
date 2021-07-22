@@ -2,8 +2,8 @@ class TodoList {
   constructor(todosArr = []) {
     this.todos = todosArr;
   }
-  
-  findTodo(element){
+
+  findTodo(element) {
     return this.todos.find((todo) => todo.element === element);
   }
 
@@ -15,14 +15,12 @@ class TodoList {
       return -1;
     };
     this.todos.sort((byIndex));
-    console.log(this.todos);
   }
-
 
   addTodo(todoObj) {
     this.todos = [...this.todos, todoObj];
   }
-  
+
   setTodos(todosArr) {
     this.todos = todosArr;
   }
