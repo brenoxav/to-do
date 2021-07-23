@@ -1,5 +1,4 @@
 import './style.css';
-import Todo from './classes/Todo.js';
 import todoList from './classes/TodoList.js';
 import { renderList } from './modules/utils.js';
 import setDraggables from './modules/drag_drop.js';
