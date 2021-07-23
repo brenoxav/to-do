@@ -2,7 +2,7 @@ import Todo from '../classes/Todo.js';
 import todoList from '../classes/TodoList.js';
 import { renderList } from './utils.js';
 
-const newTodoInput = document.querySelector('.new-todo-input')
+const newTodoInput = document.querySelector('.new-todo-input');
 
 function isValidInputField(element) {
   if (element === newTodoInput) {
@@ -45,8 +45,7 @@ function editTodoItem(saveCallback) {
   document.addEventListener('focusout', (e) => {
     if (isValidTodoText(e.target)) {
       const todoObj = todoList.findTodo(e.target.parentElement);
-      todoObj.setDescription(e.target.value)
-      console.log(todoObj);
+      todoObj.setDescription(e.target.value);
       saveCallback();
       newTodoInput.focus();
     }

@@ -185,7 +185,6 @@ input {
 
 .btn-icon {
   color: #ccc;
-  cursor: pointer;
 }
 
 .btn-delete {
@@ -202,6 +201,11 @@ input {
 
 .btn-item {
   background-color: #eee;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: #ccc;
 }
 
 .btn-clear-todos {

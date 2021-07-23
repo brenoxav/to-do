@@ -28,6 +28,10 @@ export default class Todo {
     this.completed = !this.completed;
   }
 
+  isCompleted() {
+    return this.completed;
+  }
+
   getElement() {
     return this.element;
   }
