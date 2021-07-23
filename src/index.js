@@ -4,19 +4,20 @@ import todoList from './classes/TodoList.js';
 import { renderList } from './modules/utils.js';
 import setDraggables from './modules/drag_drop.js';
 import setCheckboxes from './modules/check_todo.js';
+import { addToList } from './modules/add_remove.js';
 import storage from './modules/storage.js';
 
 const myList = [
   new Todo({
-    description: '1 Setup linters',
+    description: 'Setup linters',
     completed: true,
   }),
   new Todo({
-    description: '2 Configure Webpack',
+    description: 'Configure Webpack',
     completed: false,
   }),
   new Todo({
-    description: '3 Update README',
+    description: 'Update README',
     completed: false,
   }),
 ];
@@ -41,6 +42,7 @@ const save = () => {
 
 setDraggables(save);
 setCheckboxes(save);
+addToList(save);
 
 window.addEventListener('load', () => {
   const initialList = checkStorage(storage, myList);
