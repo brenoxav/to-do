@@ -25,6 +25,13 @@ function isValidDeleteIcon(element) {
   return false;
 }
 
+function isValidClearBtn(element) {
+  if (element.classList.contains('btn-clear-todos')) {
+    return true;
+  }
+  return false;
+}
+
 function addNewTodo(inputField) {
   if (inputField.value !== '') {
     const newTodo = new Todo({
@@ -58,7 +65,6 @@ function editTodoItem(saveCallback) {
       setTimeout(() => {
         todoDeleteBtn.classList.add('hidden');
       }, 200);
-      // newTodoInput.focus();
     }
   }, true);
 
@@ -81,4 +87,16 @@ function deleteTodoItem(saveCallback) {
   });
 }
 
-export { addToList, editTodoItem, deleteTodoItem };
+function deleteAllChecked(saveCallback) {
+  document.addEventListener('click', (e) => {
+    if (isValidClearBtn(e.target)) {
+      todoList.removeCompleted();
+      renderList(todoList.getTodos());
+      saveCallback();
+    }
+  });
+}
+
+export {
+  addToList, editTodoItem, deleteTodoItem, deleteAllChecked,
+};
