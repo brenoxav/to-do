@@ -2,8 +2,17 @@ import Todo from '../classes/Todo.js';
 import todoList from '../classes/TodoList.js';
 import { renderList } from './utils.js';
 
-function isValidinputField(element) {
-  if (element.classList.contains('new-todo-input')) {
+const newTodoInput = document.querySelector('.new-todo-input')
+
+function isValidInputField(element) {
+  if (element === newTodoInput) {
+    return true;
+  }
+  return false;
+}
+
+function isValidTodoText(element) {
+  if (element.classList.contains('todo-text')) {
     return true;
   }
   return false;
@@ -16,20 +25,32 @@ function addNewTodo(inputField) {
       completed: false,
     });
     todoList.addTodo(newTodo);
-    inputField.value = '';
     renderList(todoList.getTodos());
   }
 }
 
 function addToList(saveCallback) {
   document.addEventListener('keypress', (e) => {
-    if (isValidinputField(e.target)) {
+    if (isValidInputField(e.target)) {
       if (e.key === 'Enter') {
         addNewTodo(e.target);
+        e.target.value = '';
         saveCallback();
       }
     }
   });
 }
 
-export { addToList };
+function editTodoItem(saveCallback) {
+  document.addEventListener('focusout', (e) => {
+    if (isValidTodoText(e.target)) {
+      const todoObj = todoList.findTodo(e.target.parentElement);
+      todoObj.setDescription(e.target.value)
+      console.log(todoObj);
+      saveCallback();
+      newTodoInput.focus();
+    }
+  });
+}
+
+export { addToList, editTodoItem };

@@ -4,7 +4,7 @@ import todoList from './classes/TodoList.js';
 import { renderList } from './modules/utils.js';
 import setDraggables from './modules/drag_drop.js';
 import setCheckboxes from './modules/check_todo.js';
-import { addToList } from './modules/add_remove.js';
+import { addToList, editTodoItem } from './modules/add_remove.js';
 import storage from './modules/storage.js';
 
 const myList = [
@@ -43,6 +43,7 @@ const save = () => {
 setDraggables(save);
 setCheckboxes(save);
 addToList(save);
+editTodoItem(save);
 
 window.addEventListener('load', () => {
   const initialList = checkStorage(storage, myList);
