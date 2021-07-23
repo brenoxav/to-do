@@ -10,8 +10,6 @@ export default class Todo {
 
   setDescription(description) {
     this.description = description;
-    const todoDescription = this.element.querySelector('.todo-text');
-    todoDescription.value = this.description;
   }
 
   getDescription() {
@@ -28,6 +26,10 @@ export default class Todo {
 
   toggleCompleted() {
     this.completed = !this.completed;
+  }
+
+  isCompleted() {
+    return this.completed;
   }
 
   getElement() {

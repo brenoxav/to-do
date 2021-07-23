@@ -12,6 +12,12 @@ export default function setCheckboxes(saveCallback) {
     if (isValidCheckbox(e.target)) {
       const todoObj = todoList.findTodo(e.target.parentElement);
       todoObj.toggleCompleted();
+      const todoText = e.target.nextElementSibling;
+      if (todoObj.isCompleted()) {
+        todoText.classList.add('checked');
+      } else {
+        todoText.classList.remove('checked');
+      }
       saveCallback();
     }
   });
