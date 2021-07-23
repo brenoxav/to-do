@@ -9,20 +9,7 @@ import {
 } from './modules/add_remove.js';
 import storage from './modules/storage.js';
 
-const myList = [
-  new Todo({
-    description: 'Setup linters',
-    completed: true,
-  }),
-  new Todo({
-    description: 'Configure Webpack',
-    completed: false,
-  }),
-  new Todo({
-    description: 'Update README',
-    completed: false,
-  }),
-];
+const myList = [];
 
 function checkStorage(storage, myList) {
   if (storage.hasStorage()) {
