@@ -1,37 +1,49 @@
 import './style.css';
-
-const list = document.querySelector('.todo-list');
+import Todo from './classes/Todo.js';
+import todoList from './classes/TodoList.js';
+import { renderList } from './modules/utils.js';
+import setDraggables from './modules/drag_drop.js';
+import setCheckboxes from './modules/check_todo.js';
+import storage from './modules/storage.js';
 
 const myList = [
-  {
-    description: 'Setup linters',
+  new Todo({
+    description: '1 Setup linters',
+    completed: true,
+  }),
+  new Todo({
+    description: '2 Configure Webpack',
     completed: false,
-    index: 1,
-  },
-  {
-    description: 'Configure Webpack',
+  }),
+  new Todo({
+    description: '3 Update README',
     completed: false,
-    index: 2,
-  },
-  {
-    description: 'Update README',
-    completed: false,
-    index: 3,
-  },
+  }),
 ];
 
-function renderList() {
-  myList.forEach((todo) => {
-    const todoItem = `
-    <li class="todo-item item" data-index="${todo.index}">
-      <input class="todo-checkbox" type="checkbox" value="${todo.index}">
-      <input class="todo-text" type="text" value="${todo.description}">
-      <span class="material-icons btn-icon drag-icon">drag_indicator</span>
-    </li>
-    `;
+function checkStorage(storage, myList) {
+  if (storage.hasStorage()) {
+    return storage.getStorage();
+  }
 
-    list.innerHTML += todoItem;
+  return myList;
+}
+
+function initializeList(myList) {
+  myList.forEach((todo) => {
+    todoList.addTodo(todo);
   });
 }
 
-window.addEventListener('load', renderList);
+const save = () => {
+  storage.setStorage(todoList.getTodos());
+};
+
+setDraggables(save);
+setCheckboxes(save);
+
+window.addEventListener('load', () => {
+  const initialList = checkStorage(storage, myList);
+  initializeList(initialList);
+  renderList(initialList);
+});
