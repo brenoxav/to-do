@@ -189,6 +189,7 @@ input {
 
 .btn-delete {
   margin: auto 0.5rem;
+  cursor: pointer;
 }
 
 .drag-icon {
@@ -233,4 +234,8 @@ input {
 
 .target * {
   pointer-events: none;
+}
+
+.hidden {
+  display: none;
 }

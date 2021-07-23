@@ -21,6 +21,11 @@ class TodoList {
     this.todos = [...this.todos, todoObj];
   }
 
+  removeTodo(todoObj) {
+    this.todos = this.todos.filter((todo) => todo !== todoObj);
+    this.sortList();
+  }
+
   setTodos(todosArr) {
     this.todos = todosArr;
   }
