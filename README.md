@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-[Coming soon](https://brenoxav.github.io/to-do)
+[Click here](https://brenoxav.github.io/to-do) for a live demo of this project.
 
 
 ## Getting Started
@@ -33,7 +33,7 @@ To get a local copy up and running follow these steps.
 1. Download or clone the repository's contents.
 2. Go to the project's root directory.
 ```
-cd to-do-list
+cd to-do
 ```
 3. Install all the dependencies:
 ```
