@@ -67,13 +67,19 @@ To execute the included tests with Jest, run:
 npm test
 ```
 
-## Author
+## Authors
 
 👨‍💻 **Breno Xavier**
 
 - GitHub: [@brenoxav](https://github.com/brenoxav)
 - Twitter: [@brenoxav](https://twitter.com/brenoxav)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/brenoxav)
+
+👨‍💻 **Tiago Rahal**
+
+- GitHub: [@tiagorahal](https://github.com/tiagorahal)
+- Twitter: [@RahalAires](https://twitter.com/RahalAires)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tiagorahal/)
 
 ## 🤝 Contributing
 
