@@ -27,4 +27,4 @@ function setCheckboxes(saveCallback) {
   });
 }
 
-export { checkTodo, setCheckboxes as default }
+export { checkTodo, setCheckboxes as default };

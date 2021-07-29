@@ -3,8 +3,11 @@
  */
 
 import { expect, test } from '@jest/globals';
+import Todo from '../../classes/Todo.js';
 import todoList from '../../classes/TodoList.js';
-import { addNewTodo, deleteTodo } from '../add_remove.js';
+import {
+  addNewTodo, deleteTodo, editTodo, deleteChecked,
+} from '../add_remove.js';
 
 jest.mock('../utils.js');
 jest.mock('../storage.js');

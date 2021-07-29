@@ -54,11 +54,11 @@ function setDraggables(saveCallback) {
     if (isValidDragElement(e.target) && e.target.classList.contains('target')) {
       e.preventDefault();
       const targetObject = todoList.findTodo(e.target);
-      dropHandler(draggedObject, targetObject)
+      dropHandler(draggedObject, targetObject);
       saveCallback();
       e.target.classList.remove('target');
     }
   });
 }
 
-export { dropHandler, setDraggables as default }
+export { dropHandler, setDraggables as default };

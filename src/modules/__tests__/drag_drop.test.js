@@ -19,12 +19,12 @@ describe('Reorder todos on drag', () => {
       completed: false,
     });
 
-    todoList.addTodo(todo1); //Index 0
-    todoList.addTodo(todo2); //Index 1
+    todoList.addTodo(todo1); // Index 0
+    todoList.addTodo(todo2); // Index 1
 
     renderList(todoList.getTodos());
 
-    dropHandler(todo1, todo2); //Swap indexes
+    dropHandler(todo1, todo2); // Swap indexes
 
     expect(todoList.getTodos()[0]).toBe(todo2);
   });
