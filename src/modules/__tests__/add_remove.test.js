@@ -26,4 +26,12 @@ describe('Add and remove todos', () => {
 
     expect(todoList.getTodos().length).toBe(1);
   });
+
+  test('Delete an item from the list', () => {
+    const todo = todoList.getTodos()[0];
+
+    deleteTodo(todo);
+
+    expect(todoList.getTodos().length).toBe(0);
+  });
 });
