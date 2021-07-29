@@ -2,23 +2,28 @@
  * @jest-environment jsdom
  */
 
-import { expect, test } from "@jest/globals";
-import { addToList, editTodoItem, deleteTodoItem, deleteAllChecked } from "../add_remove";
+import { expect, test } from '@jest/globals';
+import todoList from '../../classes/TodoList.js';
+import { addNewTodo, deleteTodo } from '../add_remove.js';
 
-test('Add a new item to the list', () => {
-  document.body.innerHTML = `
-  <div class="item">
-    <input class="new-todo-input" type="text" value="Update README">
-  </div>
-  <ul class="todo-list">
-  </ul>
-  `
-  addToList(()=> {});
+jest.mock('../utils.js');
+jest.mock('../storage.js');
 
-  const newItem = document.querySelector('.new-todo-input');
+describe('Add and remove todos', () => {
+  test('Add a new item to the list', () => {
+    document.body.innerHTML = `
+    <div class="item">
+    <input class="new-todo-input" type="text" placeholder="Add new to do...">
+    <span class="material-icons btn-icon return-icon">keyboard_return</span>
+    </div>
+    <ul class="todo-list">
+    </ul>
+    `;
+    const inputField = document.querySelector('.new-todo-input');
+    inputField.value = 'Update README';
 
-  console.log(document.querySelector('.todo-text'));
-  
-  expect(newItem.value).toBe('Update README');
+    addNewTodo(inputField);
 
+    expect(todoList.getTodos().length).toBe(1);
+  });
 });

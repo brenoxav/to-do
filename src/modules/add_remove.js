@@ -76,12 +76,16 @@ function editTodoItem(saveCallback) {
   }, true);
 }
 
+function deleteTodo(todoObject) {
+  todoList.removeTodo(todoObject);
+  renderList(todoList.getTodos());
+}
+
 function deleteTodoItem(saveCallback) {
   document.addEventListener('click', (e) => {
     if (isValidDeleteIcon(e.target)) {
       const todoObject = todoList.findTodo(e.target.parentElement);
-      todoList.removeTodo(todoObject);
-      renderList(todoList.getTodos());
+      deleteTodo(todoObject);
       saveCallback();
     }
   });
@@ -98,5 +102,5 @@ function deleteAllChecked(saveCallback) {
 }
 
 export {
-  addToList, editTodoItem, deleteTodoItem, deleteAllChecked,
+  addNewTodo, addToList, editTodoItem, deleteTodo, deleteTodoItem, deleteAllChecked,
 };
