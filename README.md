@@ -60,13 +60,26 @@ You can either build a local production version of the project or open it direct
   ```
   2. Then go to `http://localhost:8080/` in you preferred browser.
 
-## Author
+### Test
+
+To execute the included tests with Jest, run:
+```
+npm test
+```
+
+## Authors
 
 👨‍💻 **Breno Xavier**
 
 - GitHub: [@brenoxav](https://github.com/brenoxav)
 - Twitter: [@brenoxav](https://twitter.com/brenoxav)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/brenoxav)
+
+👨‍💻 **Tiago Rahal**
+
+- GitHub: [@tiagorahal](https://github.com/tiagorahal)
+- Twitter: [@RahalAires](https://twitter.com/RahalAires)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tiagorahal/)
 
 ## 🤝 Contributing
 
