@@ -55,11 +55,16 @@ function addToList(saveCallback) {
   });
 }
 
+function editTodo(todoObj, todoText) {
+  todoObj.setDescription(todoText);
+}
+
 function editTodoItem(saveCallback) {
   document.addEventListener('focusout', (e) => {
     if (isValidTodoText(e.target)) {
       const todoObj = todoList.findTodo(e.target.parentElement);
-      todoObj.setDescription(e.target.value);
+      const todoText = e.target.value;
+      editTodo(todoObj, todoText);
       saveCallback();
       const todoDeleteBtn = e.target.nextElementSibling;
       setTimeout(() => {
@@ -91,16 +96,21 @@ function deleteTodoItem(saveCallback) {
   });
 }
 
+function deleteChecked(todoList) {
+  todoList.removeCompleted();
+  renderList(todoList.getTodos());
+}
+
 function deleteAllChecked(saveCallback) {
   document.addEventListener('click', (e) => {
     if (isValidClearBtn(e.target)) {
-      todoList.removeCompleted();
-      renderList(todoList.getTodos());
+      deleteChecked(todoList);
       saveCallback();
     }
   });
 }
 
 export {
-  addNewTodo, addToList, editTodoItem, deleteTodo, deleteTodoItem, deleteAllChecked,
+  addNewTodo, addToList, editTodo, editTodoItem, deleteTodo,
+  deleteTodoItem, deleteChecked, deleteAllChecked,
 };

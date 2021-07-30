@@ -10,7 +10,15 @@ function isValidDragElement(element) {
   return false;
 }
 
-export default function setDraggables(saveCallback) {
+function dropHandler(draggedObject, targetObject) {
+  const temp = draggedObject.index;
+  draggedObject.index = targetObject.index;
+  targetObject.index = temp;
+  todoList.sortList();
+  renderList(todoList.getTodos());
+}
+
+function setDraggables(saveCallback) {
   document.addEventListener('dragstart', (e) => {
     if (isValidDragElement(e.target)) {
       draggedObject = todoList.findTodo(e.target);
@@ -46,13 +54,11 @@ export default function setDraggables(saveCallback) {
     if (isValidDragElement(e.target) && e.target.classList.contains('target')) {
       e.preventDefault();
       const targetObject = todoList.findTodo(e.target);
-      const temp = draggedObject.index;
-      draggedObject.index = targetObject.index;
-      targetObject.index = temp;
-      todoList.sortList();
-      renderList(todoList.getTodos());
+      dropHandler(draggedObject, targetObject);
       saveCallback();
       e.target.classList.remove('target');
     }
   });
 }
+
+export { dropHandler, setDraggables as default };

@@ -7,11 +7,15 @@ function isValidCheckbox(element) {
   return false;
 }
 
-export default function setCheckboxes(saveCallback) {
+function checkTodo(todoObj) {
+  todoObj.toggleCompleted();
+}
+
+function setCheckboxes(saveCallback) {
   document.addEventListener('change', (e) => {
     if (isValidCheckbox(e.target)) {
       const todoObj = todoList.findTodo(e.target.parentElement);
-      todoObj.toggleCompleted();
+      checkTodo(todoObj);
       const todoText = e.target.nextElementSibling;
       if (todoObj.isCompleted()) {
         todoText.classList.add('checked');
@@ -22,3 +26,5 @@ export default function setCheckboxes(saveCallback) {
     }
   });
 }
+
+export { checkTodo, setCheckboxes as default };
